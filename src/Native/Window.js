@@ -1,4 +1,4 @@
-var _elm_lang$window$Native_Window = function()
+var _user$project$Native_Window = function()
 {
 
 var size = _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)	{
