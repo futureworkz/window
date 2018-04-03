@@ -14,10 +14,18 @@ var scrollTo = function(x, y) {
     callback(_elm_lang$core$Native_Scheduler.succeed());
   });
 };
+
+var open = function(url) {
+  return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)	{
+    window.open(url);
+    callback(_elm_lang$core$Native_Scheduler.succeed());
+  });
+};
   
 return {
+  size: size,
   scrollTo: F2(scrollTo),
-	size: size
+	open: open
 };
 
 }();

@@ -7,6 +7,7 @@ effect module Window
         , height
         , resizes
         , scrollTo
+        , open
         )
 
 {-| Your application lives in some sort of window. This library helps you
@@ -60,6 +61,13 @@ height =
 scrollTo : Int -> Int -> Task x ()
 scrollTo x y =
     Native.Window.scrollTo x y
+
+
+{-| Opens a new window
+-}
+open : String -> Task x ()
+open url =
+    Native.Window.open url
 
 
 {-| Subscribe to any changes in window size.
