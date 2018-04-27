@@ -2,11 +2,13 @@ effect module Window
     where { subscription = MySub }
     exposing
         ( Size
+        , Error(..)
         , size
         , width
         , height
         , resizes
         , scrollTo
+        , scrollToElement
         , open
         )
 
@@ -25,6 +27,13 @@ import Json.Decode as Json
 import Native.Window
 import Process
 import Task exposing (Task)
+
+
+{-| For handling error
+-}
+type Error
+    = ElementNotFound
+    | UnknownError
 
 
 {-| The size of the window in pixels.
@@ -61,6 +70,13 @@ height =
 scrollTo : Int -> Int -> Task x ()
 scrollTo x y =
     Native.Window.scrollTo x y
+
+
+{-| Scroll the window to element
+-}
+scrollToElement : String -> Task Error ()
+scrollToElement elementID =
+    Native.Window.scrollToElement elementID
 
 
 {-| Opens a new window

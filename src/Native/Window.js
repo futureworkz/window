@@ -15,6 +15,17 @@ var scrollTo = function(x, y) {
   });
 };
 
+var scrollToElement = function(id) {
+  return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
+    if (document.getElementById(id)) {
+      document.getElementById(id).scrollIntoView();
+      callback(_elm_lang$core$Native_Scheduler.succeed());
+    } else {
+      callback(_elm_lang$core$Native_Scheduler.fail({ctor: "ElementNotFound"}));
+    }
+  });
+};
+
 var open = function(url) {
   return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)	{
     window.open(url);
@@ -25,6 +36,7 @@ var open = function(url) {
 return {
   size: size,
   scrollTo: F2(scrollTo),
+  scrollToElement: scrollToElement,
 	open: open
 };
 
